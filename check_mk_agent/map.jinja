@@ -1,0 +1,11 @@
+{% set check_mk_agent = salt['grains.filter_by']({
+  'Debian': {
+    'packages': [ 'check-mk-agent', ],
+  },
+  'RedHat': {
+    'packages': [ 'check-mk-agent', ],
+  },
+  'default': {
+    'packages': [ 'check-mk-agent', ],
+  },
+}, merge=salt['pillar.get']('check_mk_agent:lookup')) %}
